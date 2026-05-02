@@ -1,0 +1,284 @@
+// =============================================
+// PAGE: Contact Section
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+.contact-section {
+  @include m.section-base;
+  position: relative;
+
+  // Hero glow
+  &::before {
+    content: '';
+    position: absolute;
+    width: 700px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      ellipse,
+      rgba(59, 130, 246, 0.08) 0%,
+      rgba(168, 85, 247, 0.05) 40%,
+      transparent 70%
+    );
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 1;
+}
+
+// --- Contact Header ---
+.contact-header {
+  text-align: center;
+  margin-bottom: v.$space-16;
+
+  .section-title {
+    font-size: clamp(v.$font-size-3xl, 5vw, v.$font-size-5xl);
+    font-weight: v.$font-weight-black;
+    color: v.$text-heading;
+    letter-spacing: -0.02em;
+    margin-bottom: v.$space-4;
+
+    span { @include m.gradient-text; }
+  }
+
+  .contact-subtitle {
+    font-size: v.$font-size-lg;
+    color: v.$text-muted;
+    line-height: v.$line-height-relaxed;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+// --- Contact Layout ---
+.contact-layout {
+  display: grid;
+  gap: v.$space-8;
+  grid-template-columns: 1fr;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  @media (min-width: v.$breakpoint-lg) {
+    grid-template-columns: 380px 1fr;
+    gap: v.$space-12;
+    align-items: start;
+  }
+}
+
+// --- Contact Info Side ---
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+}
+
+.contact-info-intro {
+  padding: v.$space-6;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+  margin-bottom: v.$space-2;
+
+  h3 {
+    font-size: v.$font-size-xl;
+    font-weight: v.$font-weight-semibold;
+    color: v.$text-heading;
+    margin-bottom: v.$space-3;
+  }
+
+  p {
+    font-size: v.$font-size-sm;
+    color: v.$text-muted;
+    line-height: v.$line-height-relaxed;
+    margin: 0;
+  }
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: v.$space-4;
+  padding: v.$space-4 v.$space-5;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-lg;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: v.$transition-fast;
+  text-decoration: none;
+
+  .info-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: v.$radius-md;
+    @include m.flex-center;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: v.$transition-normal;
+
+    &--email  { background: v.$accent-blue-soft;   border: 1px solid rgba(59,130,246,0.25);  color: v.$accent-blue; }
+    &--phone  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.25); color: #10b981; }
+    &--location { background: v.$accent-purple-soft; border: 1px solid rgba(168,85,247,0.25); color: v.$accent-purple; }
+  }
+
+  .info-text {
+    .info-label {
+      font-size: 10px;
+      color: v.$text-subtle;
+      font-weight: v.$font-weight-medium;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: v.$font-size-sm;
+      color: v.$text-heading;
+      font-weight: v.$font-weight-medium;
+      display: block;
+    }
+  }
+
+  &:hover {
+    border-color: rgba(59,130,246,0.25);
+    background: v.$glass-bg-md;
+    transform: translateX(4px);
+
+    .info-icon { transform: scale(1.1); }
+  }
+}
+
+.contact-social {
+  margin-top: v.$space-4;
+
+  .social-title {
+    font-size: v.$font-size-xs;
+    color: v.$text-subtle;
+    font-weight: v.$font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: v.$space-3;
+  }
+
+  .social-row {
+    display: flex;
+    gap: v.$space-3;
+  }
+}
+
+// --- Contact Form ---
+.contact-form-wrap {
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-2xl;
+  padding: v.$space-8;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+  box-shadow: v.$shadow-lg;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-5;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-2;
+
+  label {
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-medium;
+    color: v.$text-body;
+    display: block;
+  }
+}
+
+.form-row {
+  display: grid;
+  gap: v.$space-4;
+  grid-template-columns: 1fr;
+
+  @media (min-width: v.$breakpoint-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-input {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-md;
+  color: v.$text-heading;
+  font-size: v.$font-size-sm;
+  font-family: v.$font-primary;
+  padding: v.$space-3 v.$space-4;
+  width: 100%;
+  transition: v.$transition-fast;
+  resize: vertical;
+
+  &::placeholder {
+    color: v.$text-subtle;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(59,130,246,0.5);
+    background: rgba(59,130,246,0.05);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1),
+                0 0 20px rgba(59,130,246,0.1);
+  }
+}
+
+textarea.form-input {
+  min-height: 140px;
+  line-height: v.$line-height-relaxed;
+}
+
+.form-submit {
+  @include m.btn-base;
+  width: 100%;
+  justify-content: center;
+  padding: v.$space-4 v.$space-8;
+  font-size: v.$font-size-base;
+  background: v.$gradient-accent;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 24px rgba(59,130,246,0.4);
+
+  &:hover {
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(59,130,246,0.55);
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+// Success / error states
+.form-success {
+  @include m.flex-center;
+  flex-direction: column;
+  gap: v.$space-4;
+  padding: v.$space-10;
+  text-align: center;
+
+  .success-icon { font-size: 48px; }
+  h4 { color: v.$text-heading; font-weight: v.$font-weight-semibold; }
+  p  { color: v.$text-muted; font-size: v.$font-size-sm; }
+}

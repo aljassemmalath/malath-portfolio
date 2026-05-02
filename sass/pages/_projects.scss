@@ -1,0 +1,363 @@
+// =============================================
+// PAGE: Projects Section (Timeline-Based)
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+.projects-section {
+  @include m.section-base;
+  position: relative;
+}
+
+.projects-blob {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 20%;
+  left: -200px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+// --- Section Header ---
+.projects-header {
+  text-align: center;
+  margin-bottom: v.$space-20;
+  position: relative;
+  z-index: 1;
+
+  .section-title {
+    font-size: clamp(v.$font-size-3xl, 5vw, v.$font-size-5xl);
+    font-weight: v.$font-weight-black;
+    color: v.$text-heading;
+    line-height: v.$line-height-tight;
+    letter-spacing: -0.02em;
+    margin-bottom: v.$space-4;
+
+    span { @include m.gradient-text; }
+  }
+
+  .section-subtitle {
+    @include m.section-subtitle;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+// =============================================
+// TIMELINE WRAPPER
+// =============================================
+.timeline-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-24;
+  padding-left: 2.5rem; // 40px — room for the left line
+
+  // Animated vertical timeline line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 11px; // line center sits at ~12px from wrapper edge
+    top: 1.5rem;
+    bottom: 1.5rem;
+    width: 2px;
+    border-radius: v.$radius-full;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      v.$accent-blue 15%,
+      v.$accent-purple 50%,
+      v.$accent-blue 85%,
+      transparent 100%
+    );
+    background-size: 100% 300%;
+    animation: timelineLineFlow 5s ease-in-out infinite;
+    z-index: 0;
+  }
+}
+
+// --- Timeline Block ---
+.timeline-block {
+  position: relative;
+
+  // Glowing dot on the timeline line
+  &::before {
+    content: '';
+    position: absolute;
+    // dot left-edge at 6px from wrapper left → center at 12px = aligned with line
+    left: -2.125rem;
+    top: 1.375rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: v.$gradient-accent;
+    border: 2px solid v.$bg-primary;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.65);
+    z-index: 2;
+    animation: timelineDotPulse 2.5s ease-in-out infinite;
+  }
+}
+
+// --- Timeline Year Header ---
+.timeline-year-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; // ← left-aligned
+  gap: v.$space-3;
+  margin-bottom: v.$space-12;
+  position: relative;
+
+  .year-label {
+    display: inline-flex;
+    align-items: center;
+    gap: v.$space-3;
+    padding: v.$space-3 v.$space-6;
+    background: v.$gradient-accent;
+    border-radius: v.$radius-full;
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-bold;
+    color: #fff;
+    letter-spacing: 0.04em;
+    box-shadow: 0 4px 24px rgba(59, 130, 246, 0.4);
+    position: relative;
+    z-index: 2;
+
+    .year-icon {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+  }
+
+  .year-desc {
+    font-size: v.$font-size-sm;
+    color: v.$text-subtle;
+    font-weight: v.$font-weight-medium;
+    text-align: left; // ← left-aligned
+    padding-left: v.$space-2;
+  }
+
+  // Remove old centered connector
+  &::after {
+    display: none;
+  }
+}
+
+// --- Timeline block: Professional (2024-2026) ---
+.timeline-block--pro {
+  .timeline-year-header .year-label {
+    background: linear-gradient(135deg, v.$accent-purple, #9333ea);
+    box-shadow: 0 4px 24px rgba(168, 85, 247, 0.4);
+  }
+
+  // Purple dot
+  &::before {
+    background: linear-gradient(135deg, v.$accent-purple, #9333ea);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.65);
+    animation-name: timelineDotPulse;
+    animation-delay: 0.8s;
+  }
+}
+
+// --- Timeline block: Early (2022-2023) ---
+.timeline-block--early {
+  .timeline-year-header .year-label {
+    background: linear-gradient(135deg, #0ea5e9, v.$accent-blue);
+    box-shadow: 0 4px 24px rgba(14, 165, 233, 0.35);
+  }
+
+  // Cyan dot
+  &::before {
+    background: linear-gradient(135deg, #0ea5e9, v.$accent-blue);
+    box-shadow: 0 0 12px rgba(14, 165, 233, 0.65);
+    animation-delay: 1.6s;
+  }
+}
+
+// =============================================
+// PROJECTS GRID
+// =============================================
+.projects-grid {
+  display: grid;
+  gap: v.$space-6;
+  grid-template-columns: 1fr;
+
+  @media (min-width: v.$breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: v.$breakpoint-xl) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  // Professional section uses 2-col always
+  &--pro {
+    @media (min-width: v.$breakpoint-md) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: v.$breakpoint-xl) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+// --- Featured project card (spans 2 col) ---
+.project-card--featured {
+  @media (min-width: v.$breakpoint-md) {
+    grid-column: span 2;
+  }
+
+  @media (min-width: v.$breakpoint-xl) {
+    grid-column: span 1;
+  }
+
+  .card-image {
+    aspect-ratio: 21 / 9;
+
+    @media (min-width: v.$breakpoint-md) {
+      aspect-ratio: 16 / 7;
+    }
+
+    @media (min-width: v.$breakpoint-xl) {
+      aspect-ratio: 16 / 9;
+    }
+  }
+}
+
+// =============================================
+// PROFESSIONAL PROJECT CARD LAYOUT
+// =============================================
+.pro-project-card {
+  background: v.$glass-bg;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  border-radius: v.$radius-xl;
+  padding: v.$space-6;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+  transition: v.$transition-normal;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+  position: relative;
+  overflow: hidden;
+
+  // Left accent bar
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, v.$accent-purple, v.$accent-blue);
+    border-radius: v.$radius-sm 0 0 v.$radius-sm;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    border-color: rgba(168, 85, 247, 0.35);
+    background: v.$glass-bg-md;
+    transform: translateY(-4px);
+    box-shadow: v.$shadow-glow-purple;
+
+    &::before { opacity: 1; }
+  }
+
+  .pro-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: v.$space-3;
+  }
+
+  .pro-card-num {
+    font-size: v.$font-size-xs;
+    color: v.$text-subtle;
+    font-weight: v.$font-weight-medium;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .pro-card-title {
+    font-size: v.$font-size-xl;
+    font-weight: v.$font-weight-semibold;
+    color: v.$text-heading;
+    line-height: v.$line-height-tight;
+    margin: 0;
+    text-align: right;
+    direction: rtl;
+  }
+
+  .pro-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-3;
+  }
+
+  .pro-card-role {
+    font-size: v.$font-size-xs;
+    color: v.$text-subtle;
+    font-weight: v.$font-weight-medium;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .pro-card-desc {
+    font-size: v.$font-size-sm;
+    color: v.$text-body;
+    line-height: v.$line-height-relaxed;
+    margin: 0;
+  }
+
+  .pro-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: v.$space-3;
+    border-top: 1px solid v.$glass-border;
+    margin-top: auto;
+  }
+}
+
+// =============================================
+// PROJECTS FILTER (optional)
+// =============================================
+.projects-filter {
+  @include m.flex-center;
+  flex-wrap: wrap;
+  gap: v.$space-2;
+  margin-bottom: v.$space-12;
+
+  .filter-btn {
+    padding: v.$space-2 v.$space-5;
+    border-radius: v.$radius-full;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-medium;
+    background: v.$glass-bg;
+    border: 1px solid v.$glass-border;
+    color: v.$text-muted;
+    cursor: pointer;
+    transition: v.$transition-fast;
+
+    &:hover,
+    &.active {
+      background: v.$accent-blue-soft;
+      border-color: rgba(59, 130, 246, 0.4);
+      color: v.$accent-blue;
+    }
+
+    &.active {
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.2);
+    }
+  }
+}

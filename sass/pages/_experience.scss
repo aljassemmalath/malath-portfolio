@@ -1,0 +1,274 @@
+// =============================================
+// PAGE: Experience & Services Section
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+.experience-section {
+  @include m.section-base;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    left: -100px;
+    background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.experience-inner {
+  position: relative;
+  z-index: 1;
+}
+
+// --- Section Header ---
+.experience-header {
+  text-align: center;
+  margin-bottom: v.$space-16;
+
+  .section-title {
+    font-size: clamp(v.$font-size-3xl, 5vw, v.$font-size-5xl);
+    font-weight: v.$font-weight-black;
+    color: v.$text-heading;
+    letter-spacing: -0.02em;
+    margin-bottom: v.$space-4;
+
+    span { @include m.gradient-text; }
+  }
+
+  .section-subtitle {
+    @include m.section-subtitle;
+    margin: 0 auto;
+  }
+}
+
+// --- Two Column Layout ---
+.experience-layout {
+  display: grid;
+  gap: v.$space-8;
+  grid-template-columns: 1fr;
+
+  @media (min-width: v.$breakpoint-lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: v.$space-12;
+  }
+}
+
+// --- Experience Column ---
+.exp-column-title {
+  font-size: v.$font-size-xl;
+  font-weight: v.$font-weight-semibold;
+  color: v.$text-heading;
+  margin-bottom: v.$space-6;
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, v.$glass-border, transparent);
+  }
+
+  .col-icon {
+    width: 32px;
+    height: 32px;
+    @include m.flex-center;
+    border-radius: v.$radius-md;
+    background: v.$accent-blue-soft;
+    border: 1px solid rgba(59,130,246,0.25);
+    color: v.$accent-blue;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+}
+
+// --- Experience Timeline List ---
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-4;
+  position: relative;
+  padding-left: v.$space-6;
+
+  // Vertical line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      v.$accent-blue,
+      rgba(59,130,246,0.1)
+    );
+  }
+}
+
+.exp-item {
+  position: relative;
+
+  // Timeline dot
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * v.$space-6 + 3px);
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: v.$accent-blue;
+    border: 2px solid v.$bg-primary;
+    box-shadow: 0 0 8px rgba(59,130,246,0.6);
+    z-index: 1;
+  }
+
+  &:first-child::before {
+    background: v.$gradient-accent;
+    width: 14px;
+    height: 14px;
+    left: calc(-1 * v.$space-6 + 1px);
+    top: 15px;
+    box-shadow: 0 0 12px rgba(59,130,246,0.7);
+  }
+
+  .exp-card {
+    padding: v.$space-5;
+    background: v.$glass-bg;
+    border: 1px solid v.$glass-border;
+    border-radius: v.$radius-lg;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: v.$transition-normal;
+
+    &:hover {
+      border-color: rgba(59,130,246,0.25);
+      background: v.$glass-bg-md;
+      transform: translateX(4px);
+      box-shadow: v.$shadow-md;
+    }
+  }
+
+  .exp-period {
+    font-size: v.$font-size-xs;
+    color: v.$accent-blue;
+    font-weight: v.$font-weight-semibold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: v.$space-1;
+  }
+
+  .exp-title {
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-semibold;
+    color: v.$text-heading;
+    margin-bottom: v.$space-1;
+    line-height: v.$line-height-tight;
+  }
+
+  .exp-org {
+    font-size: v.$font-size-sm;
+    color: v.$text-muted;
+    margin-bottom: v.$space-3;
+  }
+
+  .exp-desc {
+    font-size: v.$font-size-sm;
+    color: v.$text-body;
+    line-height: v.$line-height-relaxed;
+    margin: 0;
+  }
+}
+
+// --- Services Cards ---
+.services-grid {
+  display: grid;
+  gap: v.$space-4;
+  grid-template-columns: 1fr;
+
+  @media (min-width: v.$breakpoint-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.service-card {
+  padding: v.$space-6;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: v.$transition-bounce;
+  position: relative;
+  overflow: hidden;
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: v.$radius-lg;
+    @include m.flex-center;
+    margin-bottom: v.$space-4;
+    font-size: 24px;
+    transition: v.$transition-normal;
+
+    &--design {
+      background: v.$accent-purple-soft;
+      border: 1px solid rgba(168,85,247,0.3);
+    }
+
+    &--frontend {
+      background: v.$accent-blue-soft;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+
+    &--ux {
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.3);
+    }
+
+    &--branding {
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+  }
+
+  .service-title {
+    font-size: v.$font-size-base;
+    font-weight: v.$font-weight-semibold;
+    color: v.$text-heading;
+    margin-bottom: v.$space-3;
+  }
+
+  .service-desc {
+    font-size: v.$font-size-sm;
+    color: v.$text-muted;
+    line-height: v.$line-height-relaxed;
+    margin: 0;
+  }
+
+  .service-tools {
+    margin-top: v.$space-4;
+    display: flex;
+    flex-wrap: wrap;
+    gap: v.$space-2;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59,130,246,0.25);
+    background: v.$glass-bg-md;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+
+    .service-icon { transform: scale(1.1); }
+  }
+}

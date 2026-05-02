@@ -1,0 +1,207 @@
+// =============================================
+// MIXINS — Neo Dark Glass Design System
+// =============================================
+
+@use 'variables' as v;
+
+// --- Glass Panel ---
+@mixin glass($bg: v.$glass-bg, $border: v.$glass-border, $blur: v.$blur-md) {
+  background: $bg;
+  backdrop-filter: $blur;
+  -webkit-backdrop-filter: $blur;
+  border: 1px solid $border;
+  box-shadow: v.$shadow-md;
+}
+
+@mixin glass-card {
+  @include glass(v.$glass-bg, v.$glass-border, v.$blur-md);
+  border-radius: v.$radius-xl;
+  transition: v.$transition-normal;
+
+  &:hover {
+    background: v.$glass-bg-md;
+    border-color: v.$glass-border-md;
+    box-shadow: v.$shadow-glow-blue;
+    transform: translateY(-4px) scale(1.02);
+  }
+}
+
+@mixin glass-strong {
+  @include glass(v.$glass-bg-lg, v.$glass-border-md, v.$blur-lg);
+  border-radius: v.$radius-xl;
+}
+
+// --- Glow Effects ---
+@mixin glow-blue($intensity: 0.3) {
+  box-shadow: 0 0 30px rgba(59, 130, 246, $intensity),
+              0 0 60px rgba(59, 130, 246, $intensity * 0.4);
+}
+
+@mixin glow-purple($intensity: 0.3) {
+  box-shadow: 0 0 30px rgba(168, 85, 247, $intensity),
+              0 0 60px rgba(168, 85, 247, $intensity * 0.4);
+}
+
+@mixin glow-mixed($intensity: 0.2) {
+  box-shadow: 0 0 40px rgba(59, 130, 246, $intensity),
+              0 0 80px rgba(168, 85, 247, $intensity * 0.8);
+}
+
+@mixin text-glow-blue {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.6),
+               0 0 40px rgba(59, 130, 246, 0.3);
+}
+
+@mixin text-glow-purple {
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.6),
+               0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+// --- Gradient Text ---
+@mixin gradient-text($from: v.$accent-blue, $to: v.$accent-purple) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// --- Radial Glow Background ---
+@mixin radial-glow($color, $size: 600px, $opacity: 0.15) {
+  background: radial-gradient(ellipse $size $size at center, rgba($color, $opacity), transparent 70%);
+}
+
+// --- Section Base ---
+@mixin section-base {
+  padding: v.$section-padding-y 0;
+  position: relative;
+  overflow: hidden;
+}
+
+// --- Flex Utilities ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// --- Button Base ---
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2;
+  padding: v.$space-3 v.$space-6;
+  border-radius: v.$radius-full;
+  font-weight: v.$font-weight-semibold;
+  font-size: v.$font-size-sm;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: v.$transition-bounce;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// --- Section Title ---
+@mixin section-title {
+  font-size: clamp(v.$font-size-3xl, 5vw, v.$font-size-5xl);
+  font-weight: v.$font-weight-black;
+  line-height: v.$line-height-tight;
+  color: v.$text-heading;
+  margin-bottom: v.$space-4;
+}
+
+@mixin section-subtitle {
+  font-size: v.$font-size-lg;
+  color: v.$text-muted;
+  line-height: v.$line-height-relaxed;
+  max-width: 600px;
+}
+
+// --- Tag / Badge ---
+@mixin tag-base {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-1;
+  padding: v.$space-1 v.$space-3;
+  border-radius: v.$radius-full;
+  font-size: v.$font-size-xs;
+  font-weight: v.$font-weight-medium;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+// --- Scrollbar ---
+@mixin scrollbar-hidden {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+// --- Responsive Helpers ---
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: v.$breakpoint-sm) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: v.$breakpoint-md) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: v.$breakpoint-lg) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: v.$breakpoint-xl) { @content; }
+  } @else if $breakpoint == 'xxl' {
+    @media (min-width: v.$breakpoint-xxl) { @content; }
+  }
+}
+
+// --- Decorative Blob ---
+@mixin blob($size: 400px, $color, $opacity: 0.12) {
+  position: absolute;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($color, $opacity) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: v.$z-background;
+}
+
+// --- Line Clamp ---
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

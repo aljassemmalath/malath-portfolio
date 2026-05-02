@@ -1,0 +1,440 @@
+// =============================================
+// COMPONENT: Project Cards & UI Cards
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+// =============================================
+// PROJECT CARD (2026 — Personal Work)
+// =============================================
+.project-card {
+  background: v.$glass-bg;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  overflow: hidden;
+  transition: v.$transition-slow;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  // Top shimmer line on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: v.$gradient-accent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(59, 130, 246, 0.3);
+    background: v.$glass-bg-md;
+    box-shadow: v.$shadow-glow-blue, v.$shadow-lg;
+
+    &::before {
+      opacity: 1;
+    }
+
+    .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-actions {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// --- Card Image ---
+.card-image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: v.$bg-surface;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  // Placeholder gradient when no image
+  &--placeholder {
+    @include m.flex-center;
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.1),
+      rgba(168, 85, 247, 0.1)
+    );
+
+    .placeholder-icon {
+      width: 48px;
+      height: 48px;
+      color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .card-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(11, 15, 25, 0.6) 100%
+    );
+  }
+}
+
+// --- Card Body ---
+.card-body {
+  padding: v.$space-5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+}
+
+.card-title {
+  font-size: v.$font-size-lg;
+  font-weight: v.$font-weight-semibold;
+  color: v.$text-heading;
+  line-height: v.$line-height-tight;
+  margin: 0;
+  @include m.line-clamp(2);
+}
+
+.card-description {
+  font-size: v.$font-size-sm;
+  color: v.$text-muted;
+  line-height: v.$line-height-relaxed;
+  @include m.line-clamp(3);
+  flex: 1;
+  margin: 0;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-2;
+  margin-top: auto;
+}
+
+// --- Card Actions ---
+.card-actions {
+  padding: v.$space-4 v.$space-5;
+  border-top: 1px solid v.$glass-border;
+  display: flex;
+  align-items: center;
+  gap: v.$space-3;
+  background: rgba(0, 0, 0, 0.1);
+  transition: v.$transition-normal;
+
+  .primary-actions {
+    display: flex;
+    gap: v.$space-2;
+    flex: 1;
+  }
+
+  .icon-actions {
+    display: flex;
+    gap: v.$space-2;
+    flex-shrink: 0;
+  }
+}
+
+// --- Compact Card Actions Button ---
+.card-btn-preview {
+  @include m.btn-base;
+  flex: 1;
+  justify-content: center;
+  padding: v.$space-2 v.$space-4;
+  font-size: v.$font-size-xs;
+  background: v.$gradient-accent;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
+
+  &:hover {
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.card-btn-case {
+  @include m.btn-base;
+  flex: 1;
+  justify-content: center;
+  padding: v.$space-2 v.$space-4;
+  font-size: v.$font-size-xs;
+  background: v.$glass-bg-md;
+  border-color: v.$glass-border-md;
+  color: v.$text-body;
+
+  &:hover {
+    color: v.$text-heading;
+    border-color: rgba(168, 85, 247, 0.4);
+    background: v.$accent-purple-soft;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.2);
+  }
+}
+
+// =============================================
+// PROFESSIONAL CARD (2024–2026)
+// =============================================
+.project-card--professional {
+  @extend .project-card;
+  border-color: rgba(168, 85, 247, 0.15);
+
+  &:hover {
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: v.$shadow-glow-purple, v.$shadow-lg;
+  }
+
+  .card-header-pro {
+    padding: v.$space-5;
+    border-bottom: 1px solid v.$glass-border;
+
+    .project-num {
+      font-size: v.$font-size-xs;
+      color: v.$text-subtle;
+      font-weight: v.$font-weight-medium;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: v.$space-2;
+    }
+
+    .card-title {
+      font-size: v.$font-size-xl;
+    }
+  }
+
+  .card-body-pro {
+    padding: v.$space-5;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-4;
+  }
+
+  .card-role-label {
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-medium;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: v.$text-subtle;
+    margin-bottom: v.$space-1;
+  }
+
+  .card-role-text {
+    font-size: v.$font-size-sm;
+    color: v.$text-body;
+    line-height: v.$line-height-relaxed;
+  }
+}
+
+// =============================================
+// SKILL CARD (Grid Item)
+// =============================================
+.skill-card {
+  @include m.flex-column-center;
+  gap: v.$space-3;
+  padding: v.$space-6 v.$space-4;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  transition: v.$transition-bounce;
+  text-align: center;
+  cursor: default;
+
+  .skill-icon {
+    width: 48px;
+    height: 48px;
+    @include m.flex-center;
+    border-radius: v.$radius-lg;
+    background: v.$glass-bg-md;
+    border: 1px solid v.$glass-border;
+    transition: v.$transition-normal;
+
+    img, svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .skill-name {
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-semibold;
+    color: v.$text-body;
+    transition: color 0.2s ease;
+  }
+
+  .skill-level {
+    font-size: v.$font-size-xs;
+    color: v.$text-subtle;
+    font-weight: v.$font-weight-medium;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.3);
+    background: v.$glass-bg-md;
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15),
+                0 0 0 1px rgba(59, 130, 246, 0.1);
+
+    .skill-icon {
+      background: v.$accent-blue-soft;
+      border-color: rgba(59, 130, 246, 0.3);
+      @include m.glow-blue(0.3);
+    }
+
+    .skill-name {
+      color: v.$text-heading;
+    }
+  }
+
+  // Category variants
+  &--design:hover .skill-icon  { @include m.glow-purple(0.3); background: v.$accent-purple-soft; border-color: rgba(168,85,247,0.3); }
+  &--frontend:hover .skill-icon { @include m.glow-blue(0.3); }
+  &--ux:hover .skill-icon { box-shadow: 0 0 20px rgba(16,185,129,0.3); background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); }
+}
+
+// =============================================
+// EXPERIENCE / SERVICE CARD
+// =============================================
+.experience-card {
+  padding: v.$space-6;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+  transition: v.$transition-normal;
+  position: relative;
+
+  .exp-period {
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-medium;
+    color: v.$accent-blue;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: v.$space-2;
+  }
+
+  .exp-title {
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-semibold;
+    color: v.$text-heading;
+    margin-bottom: v.$space-1;
+  }
+
+  .exp-company {
+    font-size: v.$font-size-sm;
+    color: v.$text-muted;
+    margin-bottom: v.$space-4;
+  }
+
+  .exp-responsibilities {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-2;
+
+    li {
+      font-size: v.$font-size-sm;
+      color: v.$text-body;
+      line-height: v.$line-height-relaxed;
+      padding-left: v.$space-5;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: v.$gradient-accent;
+      }
+    }
+  }
+
+  &:hover {
+    border-color: rgba(59, 130, 246, 0.25);
+    background: v.$glass-bg-md;
+    transform: translateY(-3px);
+    box-shadow: v.$shadow-md;
+  }
+}
+
+// =============================================
+// CONTACT CARD
+// =============================================
+.contact-info-card {
+  @include m.flex-center;
+  gap: v.$space-4;
+  padding: v.$space-5;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+  transition: v.$transition-fast;
+  text-decoration: none;
+  flex-direction: column;
+  text-align: center;
+
+  @media (min-width: v.$breakpoint-md) {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .info-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: v.$radius-lg;
+    background: v.$accent-blue-soft;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    @include m.flex-center;
+    color: v.$accent-blue;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+
+  .info-content {
+    .info-label {
+      font-size: v.$font-size-xs;
+      color: v.$text-subtle;
+      font-weight: v.$font-weight-medium;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .info-value {
+      font-size: v.$font-size-base;
+      color: v.$text-heading;
+      font-weight: v.$font-weight-medium;
+    }
+  }
+
+  &:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: v.$glass-bg-md;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+  }
+}
