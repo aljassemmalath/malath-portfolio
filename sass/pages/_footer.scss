@@ -1,0 +1,161 @@
+// =============================================
+// PAGE: Footer
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+.site-footer {
+  position: relative;
+  padding: v.$space-12 0 v.$space-8;
+  border-top: 1px solid v.$glass-border;
+  background: rgba(11, 15, 25, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 1px;
+    background: v.$gradient-accent;
+    opacity: 0.4;
+  }
+}
+
+// --- Footer Top Row ---
+.footer-top {
+  display: grid;
+  gap: v.$space-10;
+  grid-template-columns: 1fr;
+  margin-bottom: v.$space-10;
+
+  @media (min-width: v.$breakpoint-md) {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: v.$space-8;
+  }
+}
+
+// --- Footer Brand ---
+.footer-brand {
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: v.$space-3;
+    text-decoration: none;
+    margin-bottom: v.$space-4;
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: v.$radius-md;
+      background: v.$gradient-accent;
+      @include m.flex-center;
+      font-weight: v.$font-weight-black;
+      font-size: v.$font-size-base;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .logo-name {
+      font-size: v.$font-size-base;
+      font-weight: v.$font-weight-semibold;
+      color: v.$text-heading;
+    }
+  }
+
+  .footer-tagline {
+    font-size: v.$font-size-sm;
+    color: v.$text-subtle;
+    line-height: v.$line-height-relaxed;
+    margin-bottom: v.$space-5;
+    max-width: 280px;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: v.$space-3;
+  }
+}
+
+// --- Footer Nav Column ---
+.footer-nav-title {
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-semibold;
+  color: v.$text-heading;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: v.$space-4;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+
+  a {
+    font-size: v.$font-size-sm;
+    color: v.$text-subtle;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: v.$space-2;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: v.$accent-blue;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      color: v.$text-body;
+
+      &::before { opacity: 1; }
+    }
+  }
+}
+
+// --- Footer Bottom Row ---
+.footer-bottom {
+  @include m.flex-between;
+  flex-wrap: wrap;
+  gap: v.$space-4;
+  padding-top: v.$space-8;
+  border-top: 1px solid v.$glass-border;
+
+  .footer-copy {
+    font-size: v.$font-size-xs;
+    color: v.$text-subtle;
+
+    span {
+      @include m.gradient-text;
+      font-weight: v.$font-weight-medium;
+    }
+  }
+
+  .footer-made {
+    font-size: v.$font-size-xs;
+    color: v.$text-subtle;
+    display: flex;
+    align-items: center;
+    gap: v.$space-1;
+
+    .heart {
+      color: #ef4444;
+      font-size: 12px;
+    }
+  }
+}

@@ -1,0 +1,226 @@
+// =============================================
+// PAGE: About Section
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+.about-section {
+  @include m.section-base;
+  position: relative;
+}
+
+.about-section-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+// --- About Layout ---
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: v.$space-10;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+
+  @media (min-width: v.$breakpoint-lg) {
+    grid-template-columns: 380px 1fr;
+    gap: v.$space-16;
+  }
+}
+
+// --- About Image Side ---
+.about-visual {
+  @include m.flex-column-center;
+  gap: v.$space-4;
+
+  @media (min-width: v.$breakpoint-lg) {
+    align-items: flex-start;
+  }
+}
+
+.about-avatar-wrap {
+  position: relative;
+  width: 280px;
+  height: 280px;
+
+  @media (min-width: v.$breakpoint-lg) {
+    width: 320px;
+    height: 320px;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: v.$gradient-accent;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: rotateGlow 8s linear infinite;
+    opacity: 0.6;
+  }
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid v.$glass-border-md;
+    background: v.$bg-surface;
+    position: relative;
+    z-index: 1;
+
+    // Fallback gradient if no image
+    &[data-fallback] {
+      background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(168,85,247,0.3));
+    }
+  }
+
+  // Floating badge on avatar
+  .avatar-badge {
+    position: absolute;
+    bottom: 10px;
+    right: -10px;
+    z-index: 2;
+    background: v.$glass-bg-lg;
+    border: 1px solid v.$glass-border-md;
+    border-radius: v.$radius-lg;
+    padding: v.$space-2 v.$space-3;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    @include m.flex-center;
+    gap: v.$space-2;
+    white-space: nowrap;
+
+    .badge-icon { font-size: 18px; }
+
+    .badge-text {
+      .badge-main {
+        font-size: v.$font-size-sm;
+        font-weight: v.$font-weight-semibold;
+        color: v.$text-heading;
+        display: block;
+        line-height: 1.2;
+      }
+      .badge-sub {
+        font-size: 10px;
+        color: v.$text-subtle;
+        display: block;
+      }
+    }
+  }
+}
+
+// --- About Text Side ---
+.about-text {
+  @media (max-width: (v.$breakpoint-lg - 1px)) {
+    text-align: center;
+  }
+}
+
+.about-heading {
+  font-size: clamp(v.$font-size-3xl, 4vw, v.$font-size-5xl);
+  font-weight: v.$font-weight-black;
+  color: v.$text-heading;
+  line-height: v.$line-height-tight;
+  margin-bottom: v.$space-6;
+  letter-spacing: -0.02em;
+
+  span {
+    @include m.gradient-text;
+  }
+}
+
+.about-bio {
+  font-size: v.$font-size-base;
+  color: v.$text-body;
+  line-height: v.$line-height-relaxed;
+  margin-bottom: v.$space-6;
+}
+
+.about-specialties {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-3;
+  margin-bottom: v.$space-8;
+
+  .specialty-item {
+    @include m.flex-center;
+    gap: v.$space-3;
+    justify-content: flex-start;
+
+    @media (max-width: (v.$breakpoint-lg - 1px)) {
+      justify-content: center;
+    }
+
+    .specialty-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+
+      &--blue   { background: v.$accent-blue; box-shadow: 0 0 8px rgba(59,130,246,0.5); }
+      &--purple { background: v.$accent-purple; box-shadow: 0 0 8px rgba(168,85,247,0.5); }
+      &--green  { background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.5); }
+    }
+
+    .specialty-text {
+      font-size: v.$font-size-sm;
+      color: v.$text-body;
+      font-weight: v.$font-weight-medium;
+    }
+  }
+}
+
+.about-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+  align-items: center;
+
+  @media (max-width: (v.$breakpoint-lg - 1px)) {
+    justify-content: center;
+  }
+}
+
+// --- About Mindset Card ---
+.about-mindset {
+  margin-top: v.$space-8;
+  padding: v.$space-5;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-left: 3px solid v.$accent-blue;
+  border-radius: v.$radius-lg;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  p {
+    font-size: v.$font-size-sm;
+    color: v.$text-muted;
+    font-style: italic;
+    line-height: v.$line-height-relaxed;
+    margin: 0;
+  }
+
+  .mindset-author {
+    font-size: v.$font-size-xs;
+    color: v.$accent-blue;
+    font-weight: v.$font-weight-semibold;
+    margin-top: v.$space-2;
+    font-style: normal;
+    display: block;
+  }
+}

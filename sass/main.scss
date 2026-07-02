@@ -1,0 +1,104 @@
+// =============================================
+// MAIN ENTRY — Neo Dark Glass Portfolio
+// Import order matters: variables → mixins → base → animations → components → pages
+// =============================================
+
+// --- Foundation ---
+@use 'variables'   as v;
+@use 'mixins'      as m;
+@use 'base';
+@use 'animations';
+
+// --- Components ---
+@use 'components/glass';
+@use 'components/buttons';
+@use 'components/badges';
+@use 'components/navbar';
+@use 'components/cards';
+
+// --- Pages ---
+@use 'pages/hero';
+@use 'pages/about';
+@use 'pages/projects';
+@use 'pages/skills';
+@use 'pages/experience';
+@use 'pages/contact';
+@use 'pages/footer';
+
+// =============================================
+// Bootstrap overrides (scoped, minimal)
+// =============================================
+
+// Override Bootstrap container max-width
+.container, .container-fluid {
+  --bs-gutter-x: 1.5rem;
+}
+
+@media (min-width: 1200px) {
+  .container { max-width: 1180px; }
+}
+
+// Disable default focus ring in favor of ours
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+}
+
+// =============================================
+// UTILITY OVERRIDES & HELPERS
+// =============================================
+
+// Padding sections
+.section-py {
+  padding-top: v.$section-padding-y;
+  padding-bottom: v.$section-padding-y;
+}
+
+.section-py-sm {
+  padding-top: v.$space-20;
+  padding-bottom: v.$space-20;
+}
+
+// Text helpers
+.text-gradient { @include m.gradient-text; }
+.text-heading  { color: v.$text-heading !important; }
+.text-body-color { color: v.$text-body !important; }
+.text-muted-color  { color: v.$text-muted !important; }
+.text-subtle   { color: v.$text-subtle !important; }
+.text-accent-blue { color: v.$accent-blue !important; }
+.text-accent-purple { color: v.$accent-purple !important; }
+
+// Font weight helpers
+.fw-black { font-weight: v.$font-weight-black !important; }
+
+// Gap helpers
+.gap-2 { gap: v.$space-2; }
+.gap-3 { gap: v.$space-3; }
+.gap-4 { gap: v.$space-4; }
+.gap-5 { gap: v.$space-5; }
+
+// Max-width content
+.max-w-prose {
+  max-width: 65ch;
+}
+
+.max-w-xl { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+// Display helpers
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Section gutter helpers
+.content-offset {
+  padding-left: v.$space-6;
+  padding-right: v.$space-6;
+}
+
+// Smooth transition on all interactive elements
+a, button, [role="button"] {
+  transition: v.$transition-normal;
+}

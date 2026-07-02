@@ -1,0 +1,244 @@
+// =============================================
+// COMPONENT: Buttons
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+// --- Primary Button (Blue Gradient) ---
+.btn-primary-glow {
+  @include m.btn-base;
+  background: linear-gradient(135deg, v.$accent-blue, #2563eb);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+
+  &::before {
+    background: linear-gradient(135deg, #6ba8f9, #3B82F6);
+  }
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5),
+                0 0 0 1px rgba(59, 130, 246, 0.3);
+  }
+}
+
+// --- Secondary Button (Purple Gradient) ---
+.btn-secondary-glow {
+  @include m.btn-base;
+  background: linear-gradient(135deg, v.$accent-purple, #9333ea);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35);
+
+  &::before {
+    background: linear-gradient(135deg, #c084fc, #A855F7);
+  }
+
+  &:hover {
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.5),
+                0 0 0 1px rgba(168, 85, 247, 0.3);
+  }
+}
+
+// --- Ghost Button (Glass outline) ---
+.btn-ghost {
+  @include m.btn-base;
+  background: v.$glass-bg;
+  color: v.$text-heading;
+  border-color: v.$glass-border-md;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  &::before {
+    background: v.$glass-bg-md;
+  }
+
+  &:hover {
+    color: v.$text-heading;
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+  }
+}
+
+// --- Outline Accent ---
+.btn-outline-blue {
+  @include m.btn-base;
+  background: transparent;
+  color: v.$accent-blue;
+  border-color: rgba(59, 130, 246, 0.5);
+
+  &::before {
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  &:hover {
+    color: v.$accent-blue;
+    border-color: v.$accent-blue;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+}
+
+.btn-outline-purple {
+  @include m.btn-base;
+  background: transparent;
+  color: v.$accent-purple;
+  border-color: rgba(168, 85, 247, 0.5);
+
+  &::before {
+    background: rgba(168, 85, 247, 0.1);
+  }
+
+  &:hover {
+    color: v.$accent-purple;
+    border-color: v.$accent-purple;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+}
+
+// --- Icon Button (square/circle, icon only) ---
+.btn-icon {
+  @include m.flex-center;
+  width: 44px;
+  height: 44px;
+  border-radius: v.$radius-md;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  color: v.$text-muted;
+  cursor: pointer;
+  transition: v.$transition-bounce;
+  flex-shrink: 0;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  svg, i {
+    margin-bottom: 8px;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  }
+
+  &:hover {
+    color: v.$text-heading;
+    border-color: rgba(59, 130, 246, 0.4);
+    background: v.$glass-bg-md;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+  }
+
+  &--github:hover {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+  }
+
+  &--figma:hover {
+    color: #f24e1e;
+    border-color: rgba(242, 78, 30, 0.4);
+    background: rgba(242, 78, 30, 0.1);
+    box-shadow: 0 4px 16px rgba(242, 78, 30, 0.2);
+  }
+
+  &--linkedin:hover {
+    color: #0a66c2;
+    border-color: rgba(10, 102, 194, 0.4);
+    background: rgba(10, 102, 194, 0.1);
+    box-shadow: 0 4px 16px rgba(10, 102, 194, 0.2);
+  }
+
+  &--behance:hover {
+    color: #1769ff;
+    border-color: rgba(23, 105, 255, 0.4);
+    background: rgba(23, 105, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(23, 105, 255, 0.2);
+  }
+}
+
+.btn-icon--sm {
+  width: 36px;
+  height: 36px;
+
+  svg, i { width: 16px; height: 16px; font-size: 16px; }
+}
+
+.btn-icon--lg {
+  width: 52px;
+  height: 52px;
+
+  svg, i { width: 22px; height: 22px; font-size: 22px; }
+}
+
+// --- CTA Group ---
+.btn-group-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-4;
+  align-items: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// --- Sizes ---
+.btn-sm {
+  padding: v.$space-2 v.$space-4 !important;
+  font-size: v.$font-size-xs !important;
+}
+
+.btn-lg {
+  padding: v.$space-4 v.$space-8 !important;
+  font-size: v.$font-size-base !important;
+}
+
+// --- Social Buttons Row ---
+.social-links {
+  display: flex;
+  gap: v.$space-3;
+  align-items: center;
+}
+
+// --- Scroll Down Button ---
+.scroll-down-btn {
+  @include m.flex-column-center;
+  gap: v.$space-2;
+  color: v.$text-muted;
+  cursor: pointer;
+  font-size: v.$font-size-xs;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: v.$transition-normal;
+  text-decoration: none;
+  animation: float 3s ease-in-out infinite;
+
+  .scroll-arrow {
+    width: 40px;
+    height: 40px;
+    border: 1px solid v.$glass-border-md;
+    border-radius: 50%;
+    @include m.flex-center;
+    background: v.$glass-bg;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: v.$accent-blue;
+    }
+  }
+
+  &:hover {
+    color: v.$accent-blue;
+    transform: translateY(-3px);
+
+    .scroll-arrow {
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+  }
+}

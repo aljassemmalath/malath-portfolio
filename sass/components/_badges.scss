@@ -1,0 +1,188 @@
+// =============================================
+// COMPONENT: Badges & Tags
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+// --- Open to Work Badge ---
+.badge-open-work {
+  @include m.flex-center;
+  gap: v.$space-2;
+  display: inline-flex;
+  padding: v.$space-2 v.$space-4;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: v.$radius-full;
+  color: #10b981;
+  font-size: v.$font-size-xs;
+  font-weight: v.$font-weight-semibold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: v.$space-6;
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: rgba(16, 185, 129, 0.4);
+      border-radius: 50%;
+      animation: badgePing 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+  }
+}
+
+// --- Skill Tag ---
+.tag {
+  @include m.tag-base;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  color: v.$text-muted;
+  transition: v.$transition-fast;
+
+  &:hover {
+    background: v.$accent-blue-soft;
+    border-color: rgba(59, 130, 246, 0.3);
+    color: v.$accent-blue;
+  }
+}
+
+.tag--blue {
+  background: v.$accent-blue-soft;
+  border-color: rgba(59, 130, 246, 0.3);
+  color: v.$accent-blue;
+}
+
+.tag--purple {
+  background: v.$accent-purple-soft;
+  border-color: rgba(168, 85, 247, 0.3);
+  color: v.$accent-purple;
+}
+
+.tag--green {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.tag--yellow {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.tag--red {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+// --- Contribution Badge ---
+.badge-contribution {
+  @include m.tag-base;
+  padding: v.$space-1 v.$space-3;
+  font-size: 10px;
+
+  &--full {
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: v.$accent-blue;
+  }
+
+  &--partial {
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: v.$accent-purple;
+  }
+}
+
+// --- Section Label ---
+.section-badge {
+  @include m.tag-base;
+  background: v.$accent-blue-soft;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: v.$accent-blue;
+  margin-bottom: v.$space-4;
+  font-size: 11px;
+
+  .badge-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+// --- Year Label (Timeline) ---
+.year-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2;
+  padding: v.$space-2 v.$space-5;
+  background: v.$gradient-accent;
+  border-radius: v.$radius-full;
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-bold;
+  color: #fff;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  margin-bottom: v.$space-8;
+  position: relative;
+
+  // connector line
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 32px;
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.5), transparent);
+    margin-top: v.$space-2;
+  }
+}
+
+// --- Tags List ---
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-2;
+}
+
+// --- Tooltip Badge ---
+.tooltip-badge {
+  position: relative;
+  cursor: help;
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: v.$bg-surface;
+    border: 1px solid v.$glass-border;
+    color: v.$text-body;
+    font-size: v.$font-size-xs;
+    padding: v.$space-2 v.$space-3;
+    border-radius: v.$radius-md;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}

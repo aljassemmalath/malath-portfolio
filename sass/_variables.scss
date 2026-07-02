@@ -1,0 +1,131 @@
+// =============================================
+// VARIABLES — Neo Dark Glass Design System
+// =============================================
+
+// --- Color: Base Dark ---
+$bg-primary:    #0B0F19;
+$bg-secondary:  #111827;
+$bg-surface:    #1F2937;
+
+// --- Color: Glass ---
+$glass-bg:      rgba(255, 255, 255, 0.05);
+$glass-bg-md:   rgba(255, 255, 255, 0.08);
+$glass-bg-lg:   rgba(255, 255, 255, 0.12);
+$glass-border:  rgba(255, 255, 255, 0.1);
+$glass-border-md: rgba(255, 255, 255, 0.15);
+
+// --- Color: Accents ---
+$accent-blue:   #3B82F6;
+$accent-purple: #A855F7;
+$accent-blue-glow:   rgba(59, 130, 246, 0.4);
+$accent-purple-glow: rgba(168, 85, 247, 0.4);
+$accent-blue-soft:   rgba(59, 130, 246, 0.15);
+$accent-purple-soft: rgba(168, 85, 247, 0.15);
+
+// --- Color: Text ---
+$text-heading:  #F9FAFB;
+$text-body:     #D1D5DB;
+$text-muted:    #9CA3AF;
+$text-subtle:   #6B7280;
+
+// --- Gradients ---
+$gradient-accent: linear-gradient(135deg, $accent-blue, $accent-purple);
+$gradient-bg:     linear-gradient(135deg, $bg-primary, $bg-secondary);
+$gradient-glass:  linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+
+// --- Typography ---
+$font-primary: 'Inter', 'Segoe UI', sans-serif;
+$font-display: 'Inter', sans-serif;
+
+$font-size-xs:   0.75rem;
+$font-size-sm:   0.875rem;
+$font-size-base: 1rem;
+$font-size-lg:   1.125rem;
+$font-size-xl:   1.25rem;
+$font-size-2xl:  1.5rem;
+$font-size-3xl:  1.875rem;
+$font-size-4xl:  2.25rem;
+$font-size-5xl:  3rem;
+$font-size-6xl:  3.75rem;
+$font-size-7xl:  4.5rem;
+
+$font-weight-light:   300;
+$font-weight-normal:  400;
+$font-weight-medium:  500;
+$font-weight-semibold: 600;
+$font-weight-bold:    700;
+$font-weight-black:   900;
+
+$line-height-tight: 1.2;
+$line-height-normal: 1.6;
+$line-height-relaxed: 1.75;
+
+// --- Spacing (8px grid) ---
+$space-1:  0.25rem;  // 4px
+$space-2:  0.5rem;   // 8px
+$space-3:  0.75rem;  // 12px
+$space-4:  1rem;     // 16px
+$space-5:  1.25rem;  // 20px
+$space-6:  1.5rem;   // 24px
+$space-8:  2rem;     // 32px
+$space-10: 2.5rem;   // 40px
+$space-12: 3rem;     // 48px
+$space-16: 4rem;     // 64px
+$space-20: 5rem;     // 80px
+$space-24: 6rem;     // 96px
+$space-28: 7rem;     // 112px
+$space-32: 8rem;     // 128px
+
+$section-padding-y: 6rem;  // 96px default
+
+// --- Border Radius ---
+$radius-sm:   0.375rem;
+$radius-md:   0.75rem;
+$radius-lg:   1rem;
+$radius-xl:   1.5rem;
+$radius-2xl:  2rem;
+$radius-full: 9999px;
+
+// --- Shadows ---
+$shadow-sm:  0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+$shadow-md:  0 4px 16px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+$shadow-lg:  0 10px 40px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3);
+$shadow-xl:  0 20px 60px rgba(0,0,0,0.6);
+$shadow-glow-blue:   0 0 30px rgba(59,130,246,0.3), 0 0 60px rgba(59,130,246,0.1);
+$shadow-glow-purple: 0 0 30px rgba(168,85,247,0.3), 0 0 60px rgba(168,85,247,0.1);
+$shadow-glow-mixed:  0 0 40px rgba(59,130,246,0.2), 0 0 80px rgba(168,85,247,0.15);
+
+// --- Blur ---
+$blur-sm:  blur(4px);
+$blur-md:  blur(12px);
+$blur-lg:  blur(20px);
+$blur-xl:  blur(40px);
+
+// --- Transitions ---
+$transition-fast:   all 0.2s ease;
+$transition-normal: all 0.3s ease;
+$transition-slow:   all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-bounce: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// --- Z-index ---
+$z-background: -1;
+$z-base:       0;
+$z-raised:     10;
+$z-overlay:    100;
+$z-modal:      200;
+$z-navbar:     1000;
+$z-toast:      2000;
+
+// --- Breakpoints (matches Bootstrap 5) ---
+$breakpoint-sm:  576px;
+$breakpoint-md:  768px;
+$breakpoint-lg:  992px;
+$breakpoint-xl:  1200px;
+$breakpoint-xxl: 1400px;
+
+// --- Navbar ---
+$navbar-height:       72px;
+$navbar-height-sm:    60px;
+
+// --- Container max width ---
+$container-max: 1200px;
