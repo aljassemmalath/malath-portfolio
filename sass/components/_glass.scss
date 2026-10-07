@@ -1,0 +1,193 @@
+// =============================================
+// COMPONENT: Glass Panels & Surfaces
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+// --- Base Glass Panel ---
+.glass-panel {
+  @include m.glass;
+  border-radius: v.$radius-xl;
+}
+
+.glass-panel--sm {
+  @include m.glass(v.$glass-bg, v.$glass-border, v.$blur-sm);
+  border-radius: v.$radius-md;
+}
+
+.glass-panel--md {
+  @include m.glass(v.$glass-bg-md, v.$glass-border-md, v.$blur-md);
+  border-radius: v.$radius-xl;
+}
+
+.glass-panel--strong {
+  @include m.glass-strong;
+}
+
+// --- Glass Card ---
+.glass-card {
+  @include m.glass-card;
+  padding: v.$space-6;
+  position: relative;
+  overflow: hidden;
+
+  // Top highlight shimmer line
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+// --- Glass Hover Card (no default padding for custom layouts) ---
+.glass-hover {
+  background: v.$glass-bg;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  transition: v.$transition-normal;
+
+  &:hover {
+    background: v.$glass-bg-md;
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-4px);
+    box-shadow: v.$shadow-glow-blue;
+  }
+}
+
+// --- Inset Glass (for nested panels) ---
+.glass-inset {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: v.$radius-lg;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+// --- Glass Input ---
+.glass-input {
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-md;
+  color: v.$text-heading;
+  font-size: v.$font-size-base;
+  padding: v.$space-3 v.$space-4;
+  width: 100%;
+  transition: v.$transition-fast;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  &::placeholder {
+    color: v.$text-subtle;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(59, 130, 246, 0.5);
+    background: v.$glass-bg-md;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1),
+                0 0 20px rgba(59, 130, 246, 0.15);
+  }
+}
+
+// --- Glass Select ---
+.glass-select {
+  @extend .glass-input;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239CA3AF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+
+  option {
+    background: v.$bg-surface;
+    color: v.$text-body;
+  }
+}
+
+// --- Glass Divider ---
+.glass-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    v.$glass-border-md,
+    transparent
+  );
+  border: none;
+  margin: v.$space-8 0;
+}
+
+// --- Glass Overlay (for modals etc) ---
+.glass-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 15, 25, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: v.$z-overlay;
+}
+
+// --- Spotlight Effect ---
+.spotlight {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: v.$z-background;
+
+  &--hero {
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(59, 130, 246, 0.12) 0%,
+      rgba(168, 85, 247, 0.06) 40%,
+      transparent 70%
+    );
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    filter: blur(40px);
+  }
+}
+
+// --- Decorative Orbs ---
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  animation: orbFloat 8s ease-in-out infinite;
+
+  &--blue {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+  }
+
+  &--purple {
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 70%);
+    animation-delay: -3s;
+  }
+
+  &--sm  { width: 200px; height: 200px; }
+  &--md  { width: 350px; height: 350px; }
+  &--lg  { width: 500px; height: 500px; }
+  &--xl  { width: 700px; height: 700px; }
+}

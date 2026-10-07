@@ -1,0 +1,237 @@
+// =============================================
+// PAGE: Skills Section
+// =============================================
+
+@use '../variables' as v;
+@use '../mixins' as m;
+
+.skills-section {
+  @include m.section-base;
+  position: relative;
+
+  // Glow background
+  &::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    top: 50%;
+    right: -100px;
+    transform: translateY(-50%);
+    background: radial-gradient(ellipse, rgba(168,85,247,0.08) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.skills-inner {
+  position: relative;
+  z-index: 1;
+}
+
+// --- Skills Header ---
+.skills-header {
+  text-align: center;
+  margin-bottom: v.$space-16;
+
+  .section-title {
+    font-size: clamp(v.$font-size-3xl, 5vw, v.$font-size-5xl);
+    font-weight: v.$font-weight-black;
+    color: v.$text-heading;
+    letter-spacing: -0.02em;
+    margin-bottom: v.$space-4;
+
+    span { @include m.gradient-text; }
+  }
+
+  .section-subtitle {
+    @include m.section-subtitle;
+    margin: 0 auto;
+  }
+}
+
+// --- Skills Category Groups ---
+.skills-categories {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-12;
+}
+
+.skills-category {
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: v.$space-3;
+    margin-bottom: v.$space-8;
+
+    .category-icon {
+      width: 36px;
+      height: 36px;
+      @include m.flex-center;
+      border-radius: v.$radius-md;
+      font-size: 18px;
+      flex-shrink: 0;
+
+      &--design  { background: v.$accent-purple-soft; border: 1px solid rgba(168,85,247,0.3); }
+      &--frontend { background: v.$accent-blue-soft;  border: 1px solid rgba(59,130,246,0.3); }
+      &--ux      { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.3); }
+    }
+
+    .category-label {
+      font-size: v.$font-size-lg;
+      font-weight: v.$font-weight-semibold;
+      color: v.$text-heading;
+    }
+
+    .category-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, v.$glass-border, transparent);
+    }
+  }
+}
+
+// --- Skills Grid ---
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: v.$space-4;
+
+  @media (min-width: v.$breakpoint-md) {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: v.$space-5;
+  }
+
+  @media (min-width: v.$breakpoint-xl) {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+// --- Skill Item (icon + label) ---
+.skill-item {
+  @include m.flex-column-center;
+  gap: v.$space-3;
+  padding: v.$space-5 v.$space-3;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-xl;
+  text-align: center;
+  transition: v.$transition-bounce;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+
+  // Shimmer effect on hover
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.4s ease;
+  }
+
+  &:hover {
+    transform: translateY(-6px) scale(1.04);
+    background: v.$glass-bg-md;
+
+    &::after { left: 100%; }
+  }
+
+  .skill-icon-wrap {
+    width: 52px;
+    height: 52px;
+    @include m.flex-center;
+    border-radius: v.$radius-lg;
+    background: v.$glass-bg-md;
+    border: 1px solid v.$glass-border;
+    transition: v.$transition-normal;
+    flex-shrink: 0;
+
+    .skill-icon-img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .skill-icon-char {
+      font-size: v.$font-size-xl;
+      font-weight: v.$font-weight-black;
+      line-height: 1;
+    }
+  }
+
+  .skill-item-name {
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-semibold;
+    color: v.$text-body;
+    transition: color 0.2s ease;
+    line-height: 1.2;
+  }
+
+  .skill-item-level {
+    font-size: 10px;
+    color: v.$text-subtle;
+    font-weight: v.$font-weight-medium;
+    letter-spacing: 0.04em;
+  }
+
+  // Design skills (purple hover)
+  &[data-category="design"]:hover {
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.2);
+
+    .skill-icon-wrap {
+      background: v.$accent-purple-soft;
+      border-color: rgba(168, 85, 247, 0.3);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    }
+
+    .skill-item-name { color: v.$accent-purple; }
+  }
+
+  // Frontend skills (blue hover)
+  &[data-category="frontend"]:hover {
+    border-color: rgba(59, 130, 246, 0.35);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+
+    .skill-icon-wrap {
+      background: v.$accent-blue-soft;
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    .skill-item-name { color: v.$accent-blue; }
+  }
+
+  // UX skills (green hover)
+  &[data-category="ux"]:hover {
+    border-color: rgba(16, 185, 129, 0.35);
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15);
+
+    .skill-icon-wrap {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .skill-item-name { color: #10b981; }
+  }
+}
+
+// --- Skills Tags Strip (alternative layout) ---
+.skills-tags-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space-3;
+  justify-content: center;
+  padding: v.$space-8;
+  background: v.$glass-bg;
+  border: 1px solid v.$glass-border;
+  border-radius: v.$radius-2xl;
+  backdrop-filter: v.$blur-md;
+  -webkit-backdrop-filter: v.$blur-md;
+}

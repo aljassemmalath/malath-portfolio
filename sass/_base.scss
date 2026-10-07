@@ -1,0 +1,166 @@
+// =============================================
+// BASE — Global Resets & Typography
+// =============================================
+
+@use 'variables' as v;
+@use 'mixins' as m;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  @include m.scrollbar-hidden;
+}
+
+body {
+  font-family: v.$font-primary;
+  font-size: v.$font-size-base;
+  font-weight: v.$font-weight-normal;
+  line-height: v.$line-height-normal;
+  color: v.$text-body;
+  background-color: v.$bg-primary;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// --- Global Background System (3 layers: base + glow + texture) ---
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 900px 700px at 20% 10%, rgba(59, 130, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 600px at 80% 80%, rgba(168, 85, 247, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 60% 30%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
+    linear-gradient(135deg, v.$bg-primary 0%, #0d1220 40%, v.$bg-secondary 100%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+// Subtle grid texture overlay
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+// --- Typography ---
+h1, h2, h3, h4, h5, h6 {
+  color: v.$text-heading;
+  font-weight: v.$font-weight-bold;
+  line-height: v.$line-height-tight;
+}
+
+h1 { font-size: clamp(v.$font-size-4xl, 7vw, v.$font-size-7xl); }
+h2 { font-size: clamp(v.$font-size-3xl, 5vw, v.$font-size-5xl); }
+h3 { font-size: clamp(v.$font-size-xl, 3vw, v.$font-size-3xl); }
+h4 { font-size: v.$font-size-xl; }
+h5 { font-size: v.$font-size-lg; }
+h6 { font-size: v.$font-size-base; }
+
+p {
+  color: v.$text-body;
+  line-height: v.$line-height-relaxed;
+  margin-bottom: 0;
+}
+
+a {
+  color: v.$accent-blue;
+  text-decoration: none;
+  transition: v.$transition-fast;
+
+  &:hover {
+    color: #93c5fd;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// --- Selection ---
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: v.$text-heading;
+}
+
+// --- Focus visible ---
+:focus-visible {
+  outline: 2px solid v.$accent-blue;
+  outline-offset: 3px;
+  border-radius: v.$radius-sm;
+}
+
+// --- Scrollbar (for elements that need it) ---
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: v.$bg-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.4);
+  border-radius: v.$radius-full;
+
+  &:hover {
+    background: rgba(59, 130, 246, 0.6);
+  }
+}
+
+// --- Utility: Gradient Text ---
+.gradient-text {
+  @include m.gradient-text;
+}
+
+// --- Utility: Section Dividers ---
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: v.$gradient-accent;
+  border-radius: v.$radius-full;
+  margin: v.$space-4 auto;
+}
+
+// --- Section Label ---
+.section-label {
+  @include m.tag-base;
+  background: v.$accent-blue-soft;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: v.$accent-blue;
+  margin-bottom: v.$space-4;
+}
+
+// --- Utility: Flex ---
+.flex-center { @include m.flex-center; }
+.flex-between { @include m.flex-between; }
+
+// --- RTL/Arabic support ---
+[dir="rtl"] {
+  text-align: right;
+}
+
+.arabic-text {
+  font-family: 'Tajawal', 'Cairo', 'Segoe UI', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
