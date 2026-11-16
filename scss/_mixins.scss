@@ -21,7 +21,7 @@
   &:hover {
     background: v.$glass-bg-md;
     border-color: v.$glass-border-md;
-    box-shadow: v.$shadow-glow-blue;
+    box-shadow: v.$shadow-glow-primary;
     transform: translateY(-4px) scale(1.02);
   }
 }
@@ -32,33 +32,33 @@
 }
 
 // --- Glow Effects ---
-@mixin glow-blue($intensity: 0.3) {
-  box-shadow: 0 0 30px rgba(59, 130, 246, $intensity),
-              0 0 60px rgba(59, 130, 246, $intensity * 0.4);
+@mixin glow-primary($intensity: 0.3) {
+  box-shadow: 0 0 30px rgba(155, 122, 255, $intensity),
+              0 0 60px rgba(155, 122, 255, $intensity * 0.4);
 }
 
-@mixin glow-purple($intensity: 0.3) {
-  box-shadow: 0 0 30px rgba(168, 85, 247, $intensity),
-              0 0 60px rgba(168, 85, 247, $intensity * 0.4);
+@mixin glow-secondary($intensity: 0.3) {
+  box-shadow: 0 0 30px rgba(197, 179, 255, $intensity),
+              0 0 60px rgba(197, 179, 255, $intensity * 0.4);
 }
 
 @mixin glow-mixed($intensity: 0.2) {
-  box-shadow: 0 0 40px rgba(59, 130, 246, $intensity),
-              0 0 80px rgba(168, 85, 247, $intensity * 0.8);
+  box-shadow: 0 0 40px rgba(155, 122, 255, $intensity),
+              0 0 80px rgba(197, 179, 255, $intensity * 0.8);
 }
 
-@mixin text-glow-blue {
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.6),
-               0 0 40px rgba(59, 130, 246, 0.3);
+@mixin text-glow-primary {
+  text-shadow: 0 0 20px rgba(155, 122, 255, 0.6),
+               0 0 40px rgba(155, 122, 255, 0.3);
 }
 
-@mixin text-glow-purple {
-  text-shadow: 0 0 20px rgba(168, 85, 247, 0.6),
-               0 0 40px rgba(168, 85, 247, 0.3);
+@mixin text-glow-secondary {
+  text-shadow: 0 0 20px rgba(197, 179, 255, 0.6),
+               0 0 40px rgba(197, 179, 255, 0.3);
 }
 
 // --- Gradient Text ---
-@mixin gradient-text($from: v.$accent-blue, $to: v.$accent-purple) {
+@mixin gradient-text($from: v.$accent-primary, $to: v.$accent-secondary) {
   background: linear-gradient(135deg, $from, $to);
   -webkit-background-clip: text;
   background-clip: text;
@@ -101,6 +101,7 @@
 @mixin btn-base {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: v.$space-2;
   padding: v.$space-3 v.$space-6;
   border-radius: v.$radius-full;
@@ -114,6 +115,16 @@
   position: relative;
   overflow: hidden;
 
+  white-space: nowrap;
+  min-width: max-content;
+  flex-shrink: 0;
+
+  // Prevent text and child elements from wrapping
+  > * {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -121,6 +132,7 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     border-radius: inherit;
+    pointer-events: none;
   }
 
   &:hover::before {

@@ -1,0 +1,72 @@
+// =============================================
+// BRAND LAYER — editorial serif + fluted glass
+// Loaded last so it can refine anything above.
+// Delete this file (and its @use in main.scss) to remove these touches.
+// =============================================
+
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// --- Display serif for the big headlines ---
+.hero-name,
+.about-heading,
+.section-title,
+h1, h2 {
+  font-family: v.$font-display;
+  font-weight: v.$font-weight-medium;
+  letter-spacing: -0.02em;
+}
+
+.hero-name {
+  font-weight: v.$font-weight-medium;
+  letter-spacing: -0.03em;
+}
+
+// Italic accent word (matches the banner & posts)
+.hero-name .name-highlight,
+.section-title span,
+.about-heading span {
+  font-style: italic;
+  padding-right: 0.08em;   // keeps the italic edge from clipping in gradient text
+}
+
+.logo-name {
+  font-family: v.$font-display;
+  font-weight: v.$font-weight-medium;
+  font-size: v.$font-size-lg;
+  letter-spacing: -0.01em;
+}
+
+// --- Fluted-glass hero backdrop ---
+// Image: assets/images/fluted-hero.jpg  (fades into the page at the bottom)
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../assets/images/fluted-hero.jpg') center top / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+// Reusable fluted ribs for any panel: add class="fluted"
+.fluted {
+  position: relative;
+  isolation: isolate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(248, 246, 241, 0.06) 0,
+      rgba(248, 246, 241, 0) 22px,
+      rgba(0, 0, 0, 0.16) 36px
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+}

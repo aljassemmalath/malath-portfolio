@@ -9,7 +9,7 @@
   position: relative;
   padding: v.$space-12 0 v.$space-8;
   border-top: 1px solid v.$glass-border;
-  background: rgba(11, 15, 25, 0.6);
+  background: rgba(27, 18, 13, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   overflow: hidden;
@@ -57,7 +57,7 @@
       @include m.flex-center;
       font-weight: v.$font-weight-black;
       font-size: v.$font-size-base;
-      color: #fff;
+      color: v.$on-accent;
       flex-shrink: 0;
     }
 
@@ -114,7 +114,7 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: v.$accent-blue;
+      background: v.$accent-primary;
       opacity: 0;
       transition: opacity 0.2s ease;
       flex-shrink: 0;

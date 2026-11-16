@@ -23,7 +23,7 @@
   height: 700px;
   top: -200px;
   left: -200px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.13) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(155, 122, 255, 0.13) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(80px);
   animation: blobMove 12s ease-in-out infinite;
@@ -37,7 +37,7 @@
   height: 600px;
   bottom: -150px;
   right: -150px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(197, 179, 255, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(80px);
   animation: blobMove 15s ease-in-out infinite reverse;
@@ -52,7 +52,7 @@
   height: 400px;
   top: 40%;
   left: 60%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(155, 122, 255, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(60px);
   animation: floatSlow 10s ease-in-out infinite;
@@ -66,8 +66,8 @@
   inset: 0;
   background: radial-gradient(
     ellipse 900px 600px at 50% 40%,
-    rgba(59, 130, 246, 0.09) 0%,
-    rgba(168, 85, 247, 0.05) 40%,
+    rgba(155, 122, 255, 0.09) 0%,
+    rgba(197, 179, 255, 0.05) 40%,
     transparent 70%
   );
   pointer-events: none;
@@ -108,7 +108,7 @@
   .role-separator {
     display: inline-block;
     margin: 0 v.$space-3;
-    color: v.$accent-blue;
+    color: v.$accent-primary;
     opacity: 0.6;
   }
 }
@@ -169,7 +169,7 @@
     &:nth-child(2) { top: 35%; right: 5%; animation-delay: -1.5s; }
     &:nth-child(3) { bottom: 30%; left: 8%; animation-delay: -2.5s; }
     &:nth-child(4) { bottom: 20%; right: 8%; animation-delay: -0.8s; }
-    &:nth-child(5) { top: 15%; left: 40%; animation-delay: -3s; }
+    &:nth-child(5) { top: 11%; left: 17%; animation-delay: -3s; }
 
     @media (max-width: 992px) {
       display: none;

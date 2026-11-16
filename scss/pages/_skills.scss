@@ -18,7 +18,7 @@
     top: 50%;
     right: -100px;
     transform: translateY(-50%);
-    background: radial-gradient(ellipse, rgba(168,85,247,0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(197, 179, 255,0.08) 0%, transparent 70%);
     filter: blur(80px);
     pointer-events: none;
     z-index: 0;
@@ -73,9 +73,9 @@
       font-size: 18px;
       flex-shrink: 0;
 
-      &--design  { background: v.$accent-purple-soft; border: 1px solid rgba(168,85,247,0.3); }
-      &--frontend { background: v.$accent-blue-soft;  border: 1px solid rgba(59,130,246,0.3); }
-      &--ux      { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.3); }
+      &--design  { background: v.$accent-secondary-soft; border: 1px solid rgba(197, 179, 255,0.3); }
+      &--frontend { background: v.$accent-primary-soft;  border: 1px solid rgba(155, 122, 255,0.3); }
+      &--ux      { background: rgba(167, 134, 111,0.1);  border: 1px solid rgba(167, 134, 111,0.3); }
     }
 
     .category-label {
@@ -130,7 +130,7 @@
     left: -100%;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(248, 246, 241,0.4), transparent);
     transition: left 0.4s ease;
   }
 
@@ -181,44 +181,44 @@
 
   // Design skills (purple hover)
   &[data-category="design"]:hover {
-    border-color: rgba(168, 85, 247, 0.35);
-    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.2);
+    border-color: rgba(197, 179, 255, 0.35);
+    box-shadow: 0 8px 30px rgba(197, 179, 255, 0.2);
 
     .skill-icon-wrap {
-      background: v.$accent-purple-soft;
-      border-color: rgba(168, 85, 247, 0.3);
-      box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+      background: v.$accent-secondary-soft;
+      border-color: rgba(197, 179, 255, 0.3);
+      box-shadow: 0 0 20px rgba(197, 179, 255, 0.3);
     }
 
-    .skill-item-name { color: v.$accent-purple; }
+    .skill-item-name { color: v.$accent-secondary; }
   }
 
   // Frontend skills (blue hover)
   &[data-category="frontend"]:hover {
-    border-color: rgba(59, 130, 246, 0.35);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+    border-color: rgba(155, 122, 255, 0.35);
+    box-shadow: 0 8px 30px rgba(155, 122, 255, 0.2);
 
     .skill-icon-wrap {
-      background: v.$accent-blue-soft;
-      border-color: rgba(59, 130, 246, 0.3);
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      background: v.$accent-primary-soft;
+      border-color: rgba(155, 122, 255, 0.3);
+      box-shadow: 0 0 20px rgba(155, 122, 255, 0.3);
     }
 
-    .skill-item-name { color: v.$accent-blue; }
+    .skill-item-name { color: v.$accent-primary; }
   }
 
   // UX skills (green hover)
   &[data-category="ux"]:hover {
-    border-color: rgba(16, 185, 129, 0.35);
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15);
+    border-color: rgba(167, 134, 111, 0.35);
+    box-shadow: 0 8px 30px rgba(167, 134, 111, 0.15);
 
     .skill-icon-wrap {
-      background: rgba(16, 185, 129, 0.1);
-      border-color: rgba(16, 185, 129, 0.3);
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+      background: rgba(167, 134, 111, 0.1);
+      border-color: rgba(167, 134, 111, 0.3);
+      box-shadow: 0 0 20px rgba(167, 134, 111, 0.3);
     }
 
-    .skill-item-name { color: #10b981; }
+    .skill-item-name { color: #A7866F; }
   }
 }
 

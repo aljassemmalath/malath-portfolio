@@ -20,8 +20,8 @@
     transform: translate(-50%, -50%);
     background: radial-gradient(
       ellipse,
-      rgba(59, 130, 246, 0.08) 0%,
-      rgba(168, 85, 247, 0.05) 40%,
+      rgba(155, 122, 255, 0.08) 0%,
+      rgba(197, 179, 255, 0.05) 40%,
       transparent 70%
     );
     filter: blur(80px);
@@ -127,9 +127,9 @@
     flex-shrink: 0;
     transition: v.$transition-normal;
 
-    &--email  { background: v.$accent-blue-soft;   border: 1px solid rgba(59,130,246,0.25);  color: v.$accent-blue; }
-    &--phone  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.25); color: #10b981; }
-    &--location { background: v.$accent-purple-soft; border: 1px solid rgba(168,85,247,0.25); color: v.$accent-purple; }
+    &--email  { background: v.$accent-primary-soft;   border: 1px solid rgba(155, 122, 255,0.25);  color: v.$accent-primary; }
+    &--phone  { background: rgba(167, 134, 111,0.1);  border: 1px solid rgba(167, 134, 111,0.25); color: #A7866F; }
+    &--location { background: v.$accent-secondary-soft; border: 1px solid rgba(197, 179, 255,0.25); color: v.$accent-secondary; }
   }
 
   .info-text {
@@ -152,7 +152,7 @@
   }
 
   &:hover {
-    border-color: rgba(59,130,246,0.25);
+    border-color: rgba(155, 122, 255,0.25);
     background: v.$glass-bg-md;
     transform: translateX(4px);
 
@@ -236,10 +236,10 @@
 
   &:focus {
     outline: none;
-    border-color: rgba(59,130,246,0.5);
-    background: rgba(59,130,246,0.05);
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.1),
-                0 0 20px rgba(59,130,246,0.1);
+    border-color: rgba(155, 122, 255,0.5);
+    background: rgba(155, 122, 255,0.05);
+    box-shadow: 0 0 0 3px rgba(155, 122, 255,0.1),
+                0 0 20px rgba(155, 122, 255,0.1);
   }
 }
 
@@ -255,13 +255,13 @@ textarea.form-input {
   padding: v.$space-4 v.$space-8;
   font-size: v.$font-size-base;
   background: v.$gradient-accent;
-  color: #fff;
+  color: v.$on-accent;
   border: none;
-  box-shadow: 0 4px 24px rgba(59,130,246,0.4);
+  box-shadow: 0 4px 24px rgba(155, 122, 255,0.4);
 
   &:hover {
-    color: #fff;
-    box-shadow: 0 8px 32px rgba(59,130,246,0.55);
+    color: v.$on-accent;
+    box-shadow: 0 8px 32px rgba(155, 122, 255,0.55);
     transform: translateY(-3px);
   }
 

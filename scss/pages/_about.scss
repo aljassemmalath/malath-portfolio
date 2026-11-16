@@ -17,7 +17,7 @@
   top: 50%;
   right: -100px;
   transform: translateY(-50%);
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(197, 179, 255, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
@@ -85,7 +85,7 @@
 
     // Fallback gradient if no image
     &[data-fallback] {
-      background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(168,85,247,0.3));
+      background: linear-gradient(135deg, rgba(155, 122, 255,0.3), rgba(197, 179, 255,0.3));
     }
   }
 
@@ -172,9 +172,9 @@
       border-radius: 50%;
       flex-shrink: 0;
 
-      &--blue   { background: v.$accent-blue; box-shadow: 0 0 8px rgba(59,130,246,0.5); }
-      &--purple { background: v.$accent-purple; box-shadow: 0 0 8px rgba(168,85,247,0.5); }
-      &--green  { background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.5); }
+      &--blue   { background: v.$accent-primary; box-shadow: 0 0 8px rgba(155, 122, 255,0.5); }
+      &--purple { background: v.$accent-secondary; box-shadow: 0 0 8px rgba(197, 179, 255,0.5); }
+      &--green  { background: #A7866F; box-shadow: 0 0 8px rgba(167, 134, 111,0.5); }
     }
 
     .specialty-text {
@@ -202,7 +202,7 @@
   padding: v.$space-5;
   background: v.$glass-bg;
   border: 1px solid v.$glass-border;
-  border-left: 3px solid v.$accent-blue;
+  border-left: 3px solid v.$accent-primary;
   border-radius: v.$radius-lg;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -217,7 +217,7 @@
 
   .mindset-author {
     font-size: v.$font-size-xs;
-    color: v.$accent-blue;
+    color: v.$accent-primary;
     font-weight: v.$font-weight-semibold;
     margin-top: v.$space-2;
     font-style: normal;

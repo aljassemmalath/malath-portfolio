@@ -16,7 +16,7 @@
   height: 600px;
   top: 20%;
   left: -200px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(155, 122, 255, 0.07) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
@@ -71,9 +71,9 @@
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      v.$accent-blue 15%,
-      v.$accent-purple 50%,
-      v.$accent-blue 85%,
+      v.$accent-primary 15%,
+      v.$accent-secondary 50%,
+      v.$accent-primary 85%,
       transparent 100%
     );
     background-size: 100% 300%;
@@ -98,7 +98,7 @@
     border-radius: 50%;
     background: v.$gradient-accent;
     border: 2px solid v.$bg-primary;
-    box-shadow: 0 0 12px rgba(59, 130, 246, 0.65);
+    box-shadow: 0 0 12px rgba(155, 122, 255, 0.65);
     z-index: 2;
     animation: timelineDotPulse 2.5s ease-in-out infinite;
   }
@@ -122,9 +122,9 @@
     border-radius: v.$radius-full;
     font-size: v.$font-size-base;
     font-weight: v.$font-weight-bold;
-    color: #fff;
+    color: v.$on-accent;
     letter-spacing: 0.04em;
-    box-shadow: 0 4px 24px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 24px rgba(155, 122, 255, 0.4);
     position: relative;
     z-index: 2;
 
@@ -151,14 +151,14 @@
 // --- Timeline block: Professional (2024-2026) ---
 .timeline-block--pro {
   .timeline-year-header .year-label {
-    background: linear-gradient(135deg, v.$accent-purple, #9333ea);
-    box-shadow: 0 4px 24px rgba(168, 85, 247, 0.4);
+    background: linear-gradient(135deg, v.$accent-secondary, #AD99FF);
+    box-shadow: 0 4px 24px rgba(197, 179, 255, 0.4);
   }
 
   // Purple dot
   &::before {
-    background: linear-gradient(135deg, v.$accent-purple, #9333ea);
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.65);
+    background: linear-gradient(135deg, v.$accent-secondary, #AD99FF);
+    box-shadow: 0 0 12px rgba(197, 179, 255, 0.65);
     animation-name: timelineDotPulse;
     animation-delay: 0.8s;
   }
@@ -167,14 +167,14 @@
 // --- Timeline block: Early (2022-2023) ---
 .timeline-block--early {
   .timeline-year-header .year-label {
-    background: linear-gradient(135deg, #0ea5e9, v.$accent-blue);
-    box-shadow: 0 4px 24px rgba(14, 165, 233, 0.35);
+    background: linear-gradient(135deg, #A7866F, v.$accent-primary);
+    box-shadow: 0 4px 24px rgba(167, 134, 111, 0.35);
   }
 
   // Cyan dot
   &::before {
-    background: linear-gradient(135deg, #0ea5e9, v.$accent-blue);
-    box-shadow: 0 0 12px rgba(14, 165, 233, 0.65);
+    background: linear-gradient(135deg, #A7866F, v.$accent-primary);
+    box-shadow: 0 0 12px rgba(167, 134, 111, 0.65);
     animation-delay: 1.6s;
   }
 }
@@ -235,7 +235,7 @@
 // =============================================
 .pro-project-card {
   background: v.$glass-bg;
-  border: 1px solid rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(197, 179, 255, 0.15);
   border-radius: v.$radius-xl;
   padding: v.$space-6;
   backdrop-filter: v.$blur-md;
@@ -255,17 +255,17 @@
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(to bottom, v.$accent-purple, v.$accent-blue);
+    background: linear-gradient(to bottom, v.$accent-secondary, v.$accent-primary);
     border-radius: v.$radius-sm 0 0 v.$radius-sm;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
 
   &:hover {
-    border-color: rgba(168, 85, 247, 0.35);
+    border-color: rgba(197, 179, 255, 0.35);
     background: v.$glass-bg-md;
     transform: translateY(-4px);
-    box-shadow: v.$shadow-glow-purple;
+    box-shadow: v.$shadow-glow-secondary;
 
     &::before { opacity: 1; }
   }
@@ -351,13 +351,13 @@
 
     &:hover,
     &.active {
-      background: v.$accent-blue-soft;
-      border-color: rgba(59, 130, 246, 0.4);
-      color: v.$accent-blue;
+      background: v.$accent-primary-soft;
+      border-color: rgba(155, 122, 255, 0.4);
+      color: v.$accent-primary;
     }
 
     &.active {
-      box-shadow: 0 0 16px rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 16px rgba(155, 122, 255, 0.2);
     }
   }
 }

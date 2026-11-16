@@ -1,5 +1,5 @@
 // =============================================
-// MAIN ENTRY — Neo Dark Glass Portfolio
+// MAIN ENTRY — Brand Portfolio
 // Import order matters: variables → mixins → base → animations → components → pages
 // =============================================
 
@@ -24,6 +24,9 @@
 @use 'pages/experience';
 @use 'pages/contact';
 @use 'pages/footer';
+
+// --- Brand layer (typography + fluted glass) ---
+@use 'brand';
 
 // =============================================
 // Bootstrap overrides (scoped, minimal)
@@ -66,8 +69,8 @@
 .text-body-color { color: v.$text-body !important; }
 .text-muted-color  { color: v.$text-muted !important; }
 .text-subtle   { color: v.$text-subtle !important; }
-.text-accent-blue { color: v.$accent-blue !important; }
-.text-accent-purple { color: v.$accent-purple !important; }
+.text-accent-blue { color: v.$accent-primary !important; }
+.text-accent-purple { color: v.$accent-secondary !important; }
 
 // Font weight helpers
 .fw-black { font-weight: v.$font-weight-black !important; }

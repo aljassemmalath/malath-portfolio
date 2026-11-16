@@ -1,41 +1,59 @@
 // =============================================
-// VARIABLES — Neo Dark Glass Design System
+// VARIABLES — Brand Design System
+// Chocolate · Coffee · Taupe · Electric Purple · Lavender · Cream
 // =============================================
 
-// --- Color: Base Dark ---
-$bg-primary:    #0B0F19;
-$bg-secondary:  #111827;
-$bg-surface:    #1F2937;
+// --- Brand palette (single source of truth) ---
+$brand-chocolate: #1B120D;
+$brand-coffee:    #5A3A2A;
+$brand-taupe:     #A7866F;
+$brand-purple:    #9B7AFF;   // Electric Purple
+$brand-lavender:  #C5B3FF;
+$brand-cream:     #F8F6F1;
 
-// --- Color: Glass ---
-$glass-bg:      rgba(255, 255, 255, 0.05);
-$glass-bg-md:   rgba(255, 255, 255, 0.08);
-$glass-bg-lg:   rgba(255, 255, 255, 0.12);
-$glass-border:  rgba(255, 255, 255, 0.1);
-$glass-border-md: rgba(255, 255, 255, 0.15);
+// --- Color: Base (warm dark) ---
+$bg-primary:    $brand-chocolate;
+$bg-secondary:  #231710;     // chocolate, lifted slightly
+$bg-surface:    #33221A;     // between chocolate and coffee
+
+// --- Color: Glass (cream-tinted) ---
+$glass-bg:      rgba(248, 246, 241, 0.05);
+$glass-bg-md:   rgba(248, 246, 241, 0.08);
+$glass-bg-lg:   rgba(248, 246, 241, 0.12);
+$glass-border:  rgba(248, 246, 241, 0.10);
+$glass-border-md: rgba(248, 246, 241, 0.15);
 
 // --- Color: Accents ---
-$accent-blue:   #3B82F6;
-$accent-purple: #A855F7;
-$accent-blue-glow:   rgba(59, 130, 246, 0.4);
-$accent-purple-glow: rgba(168, 85, 247, 0.4);
-$accent-blue-soft:   rgba(59, 130, 246, 0.15);
-$accent-purple-soft: rgba(168, 85, 247, 0.15);
+// primary   = Electric Purple  (buttons, links, key highlights)
+// secondary = Lavender         (gradients, soft highlights)
+// tertiary  = Taupe            (warm balance, third category colour)
+$accent-primary:   $brand-purple;
+$accent-secondary: $brand-lavender;
+$accent-tertiary:  $brand-taupe;
+$accent-primary-glow:   rgba(155, 122, 255, 0.4);
+$accent-secondary-glow: rgba(197, 179, 255, 0.4);
+$accent-primary-soft:   rgba(155, 122, 255, 0.15);
+$accent-secondary-soft: rgba(197, 179, 255, 0.15);
+$accent-tertiary-soft:  rgba(167, 134, 111, 0.15);
+
+// Text placed on a solid accent fill (chocolate keeps contrast high on purple)
+$on-accent: $brand-chocolate;
 
 // --- Color: Text ---
-$text-heading:  #F9FAFB;
-$text-body:     #D1D5DB;
-$text-muted:    #9CA3AF;
-$text-subtle:   #6B7280;
+$text-heading:  $brand-cream;
+$text-body:     #E2DCD2;
+$text-muted:    #BBA595;
+$text-subtle:   #8C7060;
 
 // --- Gradients ---
-$gradient-accent: linear-gradient(135deg, $accent-blue, $accent-purple);
+$gradient-accent: linear-gradient(135deg, $accent-primary, $accent-secondary);
 $gradient-bg:     linear-gradient(135deg, $bg-primary, $bg-secondary);
-$gradient-glass:  linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+$gradient-glass:  linear-gradient(135deg, rgba(248,246,241,0.08), rgba(248,246,241,0.02));
 
 // --- Typography ---
 $font-primary: 'Inter', 'Segoe UI', sans-serif;
-$font-display: 'Inter', sans-serif;
+// Display serif for headlines. Set to $font-primary to switch it off.
+$font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
 
 $font-size-xs:   0.75rem;
 $font-size-sm:   0.875rem;
@@ -91,9 +109,9 @@ $shadow-sm:  0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
 $shadow-md:  0 4px 16px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
 $shadow-lg:  0 10px 40px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3);
 $shadow-xl:  0 20px 60px rgba(0,0,0,0.6);
-$shadow-glow-blue:   0 0 30px rgba(59,130,246,0.3), 0 0 60px rgba(59,130,246,0.1);
-$shadow-glow-purple: 0 0 30px rgba(168,85,247,0.3), 0 0 60px rgba(168,85,247,0.1);
-$shadow-glow-mixed:  0 0 40px rgba(59,130,246,0.2), 0 0 80px rgba(168,85,247,0.15);
+$shadow-glow-primary:   0 0 30px rgba(155, 122, 255,0.3), 0 0 60px rgba(155, 122, 255,0.1);
+$shadow-glow-secondary: 0 0 30px rgba(197, 179, 255,0.3), 0 0 60px rgba(197, 179, 255,0.1);
+$shadow-glow-mixed:  0 0 40px rgba(155, 122, 255,0.2), 0 0 80px rgba(197, 179, 255,0.15);
 
 // --- Blur ---
 $blur-sm:  blur(4px);

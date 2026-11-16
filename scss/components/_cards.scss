@@ -36,9 +36,9 @@
 
   &:hover {
     transform: translateY(-6px) scale(1.02);
-    border-color: rgba(59, 130, 246, 0.3);
+    border-color: rgba(155, 122, 255, 0.3);
     background: v.$glass-bg-md;
-    box-shadow: v.$shadow-glow-blue, v.$shadow-lg;
+    box-shadow: v.$shadow-glow-primary, v.$shadow-lg;
 
     &::before {
       opacity: 1;
@@ -75,14 +75,14 @@
     @include m.flex-center;
     background: linear-gradient(
       135deg,
-      rgba(59, 130, 246, 0.1),
-      rgba(168, 85, 247, 0.1)
+      rgba(155, 122, 255, 0.1),
+      rgba(197, 179, 255, 0.1)
     );
 
     .placeholder-icon {
       width: 48px;
       height: 48px;
-      color: rgba(255, 255, 255, 0.2);
+      color: rgba(248, 246, 241, 0.2);
     }
   }
 
@@ -92,7 +92,7 @@
     background: linear-gradient(
       to bottom,
       transparent 50%,
-      rgba(11, 15, 25, 0.6) 100%
+      rgba(27, 18, 13, 0.6) 100%
     );
   }
 }
@@ -157,18 +157,19 @@
 // --- Compact Card Actions Button ---
 .card-btn-preview {
   @include m.btn-base;
-  flex: 1;
+  flex: 0 0 auto;
   justify-content: center;
   padding: v.$space-2 v.$space-4;
   font-size: v.$font-size-xs;
   background: v.$gradient-accent;
-  color: #fff;
+  color: v.$on-accent;
   border: none;
-  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 12px rgba(155, 122, 255, 0.3);
+  white-space: nowrap;
 
   &:hover {
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+    color: v.$on-accent;
+    box-shadow: 0 4px 20px rgba(155, 122, 255, 0.5);
   }
 }
 
@@ -184,9 +185,9 @@
 
   &:hover {
     color: v.$text-heading;
-    border-color: rgba(168, 85, 247, 0.4);
-    background: v.$accent-purple-soft;
-    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.2);
+    border-color: rgba(197, 179, 255, 0.4);
+    background: v.$accent-secondary-soft;
+    box-shadow: 0 4px 16px rgba(197, 179, 255, 0.2);
   }
 }
 
@@ -195,11 +196,11 @@
 // =============================================
 .project-card--professional {
   @extend .project-card;
-  border-color: rgba(168, 85, 247, 0.15);
+  border-color: rgba(197, 179, 255, 0.15);
 
   &:hover {
-    border-color: rgba(168, 85, 247, 0.35);
-    box-shadow: v.$shadow-glow-purple, v.$shadow-lg;
+    border-color: rgba(197, 179, 255, 0.35);
+    box-shadow: v.$shadow-glow-secondary, v.$shadow-lg;
   }
 
   .card-header-pro {
@@ -288,15 +289,15 @@
 
   &:hover {
     transform: translateY(-4px);
-    border-color: rgba(59, 130, 246, 0.3);
+    border-color: rgba(155, 122, 255, 0.3);
     background: v.$glass-bg-md;
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15),
-                0 0 0 1px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 8px 30px rgba(155, 122, 255, 0.15),
+                0 0 0 1px rgba(155, 122, 255, 0.1);
 
     .skill-icon {
-      background: v.$accent-blue-soft;
-      border-color: rgba(59, 130, 246, 0.3);
-      @include m.glow-blue(0.3);
+      background: v.$accent-primary-soft;
+      border-color: rgba(155, 122, 255, 0.3);
+      @include m.glow-primary(0.3);
     }
 
     .skill-name {
@@ -305,9 +306,9 @@
   }
 
   // Category variants
-  &--design:hover .skill-icon  { @include m.glow-purple(0.3); background: v.$accent-purple-soft; border-color: rgba(168,85,247,0.3); }
-  &--frontend:hover .skill-icon { @include m.glow-blue(0.3); }
-  &--ux:hover .skill-icon { box-shadow: 0 0 20px rgba(16,185,129,0.3); background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); }
+  &--design:hover .skill-icon  { @include m.glow-secondary(0.3); background: v.$accent-secondary-soft; border-color: rgba(197, 179, 255,0.3); }
+  &--frontend:hover .skill-icon { @include m.glow-primary(0.3); }
+  &--ux:hover .skill-icon { box-shadow: 0 0 20px rgba(167, 134, 111,0.3); background: rgba(167, 134, 111,0.1); border-color: rgba(167, 134, 111,0.3); }
 }
 
 // =============================================
@@ -326,7 +327,7 @@
   .exp-period {
     font-size: v.$font-size-xs;
     font-weight: v.$font-weight-medium;
-    color: v.$accent-blue;
+    color: v.$accent-primary;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: v.$space-2;
@@ -374,7 +375,7 @@
   }
 
   &:hover {
-    border-color: rgba(59, 130, 246, 0.25);
+    border-color: rgba(155, 122, 255, 0.25);
     background: v.$glass-bg-md;
     transform: translateY(-3px);
     box-shadow: v.$shadow-md;
@@ -407,10 +408,10 @@
     width: 48px;
     height: 48px;
     border-radius: v.$radius-lg;
-    background: v.$accent-blue-soft;
-    border: 1px solid rgba(59, 130, 246, 0.25);
+    background: v.$accent-primary-soft;
+    border: 1px solid rgba(155, 122, 255, 0.25);
     @include m.flex-center;
-    color: v.$accent-blue;
+    color: v.$accent-primary;
     flex-shrink: 0;
     font-size: 20px;
   }
@@ -432,9 +433,9 @@
   }
 
   &:hover {
-    border-color: rgba(59, 130, 246, 0.3);
+    border-color: rgba(155, 122, 255, 0.3);
     background: v.$glass-bg-md;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 8px 25px rgba(155, 122, 255, 0.15);
   }
 }
